@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esha's Beauty Studio – Luxury Bridal Makeup | Bahawalpur</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #ffffff;
+    --cream: #ffffff;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #f5e6c0;
+    --blush: #f2cfc9;
+    --blush-deep: #e8b4ab;
+    --maroon: #7a2230;
+    --maroon-soft: #9b3a4a;
+    --brown: #5c3d2e;
+    --brown-light: #8a6a55;
+    --glass-bg: rgba(255,255,255,0.45);
+    --glass-border: rgba(201,168,76,0.3);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Jost',sans-serif;
+    background:var(--ivory);
+    color:var(--brown);
+    overflow-x:hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before{
+    content:'';position:fixed;inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events:none;z-index:0;opacity:.4;
+  }
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;width:100%;z-index:100;
+    padding:1.2rem 4rem;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(255,255,255,0.9);
+    -webkit-backdrop-filter:blur(20px);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(201,168,76,0.15);
+    transition:all .4s;
+    position:fixed;
+  }
+  .nav-logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.6rem;font-weight:600;
+    color:var(--maroon);
+    letter-spacing:.02em;
+  }
+  .nav-logo span{color:var(--gold);}
+  .nav-links{display:flex;gap:2.5rem;list-style:none;}
+  .nav-links a{
+    font-size:.85rem;font-weight:500;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--brown-light);
+    text-decoration:none;transition:color .3s;
+    position:relative;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;bottom:-4px;left:0;
+    width:0;height:1px;background:var(--gold);transition:width .3s;
+  }
+  .nav-links a:hover{color:var(--gold);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--maroon);color:#fff;
+    padding:.6rem 1.6rem;border-radius:50px;
+    font-size:.82rem;font-weight:500;letter-spacing:.06em;
+    text-transform:uppercase;text-decoration:none;
+    transition:all .3s;
+  }
+  .nav-cta:hover{background:var(--gold);transform:translateY(-1px);box-shadow:0 8px 20px rgba(201,168,76,.3);}
+  .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .nav-hamburger span{width:24px;height:2px;background:var(--brown);display:block;transition:.3s;}
+  nav.open .nav-hamburger{position:relative;z-index:201;}
+  nav.open .nav-hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  nav.open .nav-hamburger span:nth-child(2){opacity:0;}
+  nav.open .nav-hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  /* POPUP */
+  .popup-overlay{
+    position:fixed;inset:0;z-index:999;
+    background:rgba(90,50,30,0.35);
+    -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(8px);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;animation:fadeInOverlay .6s .4s forwards;
+  }
+  @keyframes fadeInOverlay{to{opacity:1}}
+  .popup-card{
+    background:#ffffff;
+    border:1px solid var(--glass-border);
+    border-radius:24px;
+    padding:3rem 2.5rem;
+    max-width:420px;width:90%;
+    text-align:center;
+    box-shadow:0 40px 80px rgba(122,34,48,.15);
+    transform:translateY(30px) scale(.96);
+    animation:popupSlide .6s .5s cubic-bezier(.22,.68,0,1.2) forwards;
+    position:relative;overflow:hidden;
+  }
+  @keyframes popupSlide{to{transform:translateY(0) scale(1)}}
+  .popup-card::before{
+    content:'';position:absolute;top:-40px;right:-40px;
+    width:150px;height:150px;
+    background:radial-gradient(circle,rgba(201,168,76,.15),transparent 70%);
+    border-radius:50%;
+  }
+  .popup-icon{font-size:2.5rem;margin-bottom:.5rem;}
+  .popup-card h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.9rem;font-weight:600;color:var(--maroon);
+    margin-bottom:.5rem;
+  }
+  .popup-card p{font-size:.88rem;color:var(--brown-light);margin-bottom:1.5rem;}
+  .popup-input{
+    width:100%;padding:.85rem 1.2rem;
+    border:1.5px solid rgba(201,168,76,.3);
+    border-radius:12px;
+    background:rgba(255,255,255,.7);
+    font-family:'Jost',sans-serif;font-size:.9rem;
+    color:var(--brown);outline:none;margin-bottom:.8rem;
+    transition:border-color .3s;
+  }
+  .popup-input:focus{border-color:var(--gold);}
+  .popup-btn{
+    width:100%;padding:.9rem;
+    background:linear-gradient(135deg,var(--maroon),var(--maroon-soft));
+    color:#fff;border:none;border-radius:12px;
+    font-family:'Jost',sans-serif;font-size:.9rem;font-weight:600;
+    letter-spacing:.05em;cursor:pointer;
+    transition:all .3s;margin-bottom:1rem;
+  }
+  .popup-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(122,34,48,.3);}
+  .popup-skip{
+    font-size:.8rem;color:var(--brown-light);cursor:pointer;
+    text-decoration:underline;opacity:.7;transition:opacity .3s;
+    background:none;border:none;font-family:'Jost',sans-serif;
+  }
+  .popup-skip:hover{opacity:1;}
+  .popup-overlay.hidden{display:none;}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;padding:8rem 4rem 4rem;
+    display:grid;grid-template-columns:1fr 1fr;
+    align-items:center;gap:4rem;
+    position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 60% 70% at 80% 50%,rgba(242,207,201,.4),transparent 65%),
+               radial-gradient(ellipse 40% 40% at 10% 20%,rgba(201,168,76,.08),transparent 60%);
+  }
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.35);
+    padding:.35rem 1rem;border-radius:50px;
+    font-size:.78rem;font-weight:500;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:1.5rem;
+  }
+  .hero-badge::before{content:'✦';font-size:.65rem;}
+  .hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2.8rem,5vw,4.5rem);
+    font-weight:600;line-height:1.1;
+    color:var(--maroon);margin-bottom:1.2rem;
+  }
+  .hero h1 em{font-style:italic;color:var(--brown);}
+  .hero-sub{
+    font-size:1rem;line-height:1.8;color:var(--brown-light);
+    max-width:480px;margin-bottom:2.2rem;font-weight:300;
+  }
+  .hero-sub strong{color:var(--brown);font-weight:500;}
+  .hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn-primary{
+    padding:.85rem 2rem;
+    background:linear-gradient(135deg,var(--maroon),#9b2535);
+    color:#fff;border:none;border-radius:50px;
+    font-family:'Jost',sans-serif;font-size:.88rem;font-weight:600;
+    letter-spacing:.05em;text-transform:uppercase;
+    cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;
+    transition:all .35s;position:relative;overflow:hidden;
+    box-shadow:0 8px 25px rgba(122,34,48,.25);
+  }
+  .btn-primary::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);
+    opacity:0;transition:opacity .3s;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 35px rgba(122,34,48,.35);}
+  .btn-primary:hover::before{opacity:1;}
+  .btn-secondary{
+    padding:.85rem 2rem;
+    background:transparent;
+    border:1.5px solid var(--gold);
+    color:var(--gold);border-radius:50px;
+    font-family:'Jost',sans-serif;font-size:.88rem;font-weight:600;
+    letter-spacing:.05em;text-transform:uppercase;
+    cursor:pointer;text-decoration:none;
+    display:inline-flex;align-items:center;gap:.5rem;
+    transition:all .35s;
+  }
+  .btn-secondary:hover{background:var(--gold);color:#fff;transform:translateY(-3px);}
+  .hero-stats{
+    display:flex;gap:2rem;margin-top:2.5rem;
+    padding-top:2rem;border-top:1px solid rgba(201,168,76,.2);
+  }
+  .hero-stat span{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--maroon);display:block;}
+  .hero-stat small{font-size:.78rem;color:var(--brown-light);letter-spacing:.06em;text-transform:uppercase;}
+
+  /* HERO RIGHT */
+  .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;}
+  .hero-oval{
+    width:340px;height:430px;
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    overflow:hidden;position:relative;
+    border:2px solid rgba(201,168,76,.5);
+    box-shadow:0 30px 80px rgba(122,34,48,.2),inset 0 0 60px rgba(201,168,76,.05);
+  }
+  .hero-oval img{width:100%;height:100%;object-fit:cover;object-position:top;}
+  .hero-oval-glow{
+    position:absolute;inset:-20px;
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    background:radial-gradient(ellipse,rgba(201,168,76,.15),transparent 70%);
+    animation:glowPulse 3s ease-in-out infinite;
+  }
+  @keyframes glowPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+  .float-elem{
+    position:absolute;
+    background:rgba(255,255,255,.6);  -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(201,168,76,.3);
+    border-radius:16px;padding:.8rem 1.2rem;
+    box-shadow:0 10px 30px rgba(122,34,48,.1);
+    animation:floatUp 4s ease-in-out infinite;
+  }
+  .float-elem.fe1{bottom:60px;left:-60px;animation-delay:0s;}
+  .float-elem.fe2{top:80px;right:-50px;animation-delay:1.5s;}
+  .float-elem.fe3{bottom:200px;right:-70px;animation-delay:3s;}
+  @keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .float-elem .fe-label{font-size:.72rem;color:var(--brown-light);letter-spacing:.05em;text-transform:uppercase;}
+  .float-elem .fe-val{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--maroon);}
+  .particles{position:absolute;inset:0;pointer-events:none;}
+  .particle{
+    position:absolute;width:4px;height:4px;
+    background:var(--gold);border-radius:50%;opacity:.5;
+    animation:particleFloat linear infinite;
+  }
+  @keyframes particleFloat{
+    0%{transform:translateY(0) translateX(0) scale(1);opacity:.5}
+    50%{opacity:.8}
+    100%{transform:translateY(-100px) translateX(20px) scale(0);opacity:0}
+  }
+  .gold-ring{
+    position:absolute;
+    border:1px solid rgba(201,168,76,.25);
+    border-radius:50%;
+    animation:ringRotate 20s linear infinite;
+  }
+  @keyframes ringRotate{to{transform:rotate(360deg)}}
+
+  /* SOCIAL PROOF */
+  .social-proof{
+    padding:5rem 4rem;
+    background:linear-gradient(135deg,var(--maroon) 0%,#5c1a25 100%);
+    position:relative;overflow:hidden;
+  }
+  .social-proof::before{
+    content:'';position:absolute;inset:0;
+    background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .sp-inner{
+    max-width:1000px;margin:0 auto;
+    display:flex;flex-direction:row;gap:2rem;justify-content:center;align-items:stretch;
+    position:relative;z-index:1;
+  }
+  .sp-card{
+    flex:1;min-width:0;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(201,168,76,.25);
+    border-radius:20px;padding:2.5rem;text-align:center;  -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(10px);
+    transition:transform .3s,background .3s;
+  }
+  .sp-card:hover{transform:translateY(-5px);background:rgba(255,255,255,.12);}
+  .sp-icon{font-size:2rem;margin-bottom:.8rem;}
+  .sp-num{
+    font-family:'Cormorant Garamond',serif;
+    font-size:3rem;font-weight:600;color:var(--gold-light);
+    line-height:1;margin-bottom:.5rem;
+  }
+  .sp-label{font-size:.85rem;color:rgba(255,255,255,.7);letter-spacing:.06em;text-transform:uppercase;font-weight:400;}
+
+  /* SECTION COMMON */
+  .section-header{text-align:center;margin-bottom:3.5rem;}
+  .section-tag{
+    display:inline-block;
+    font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--gold);font-weight:500;margin-bottom:.8rem;
+  }
+  .section-header h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2rem,4vw,3rem);font-weight:600;
+    color:var(--maroon);line-height:1.2;
+  }
+  .section-header p{
+    font-size:.95rem;color:var(--brown-light);
+    margin-top:.8rem;max-width:500px;margin-left:auto;margin-right:auto;
+    line-height:1.8;
+  }
+  .gold-divider{
+    width:60px;height:2px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    margin:.8rem auto;
+  }
+
+  /* SERVICES */
+  .services{padding:6rem 4rem;}
+  .services-grid{
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  }
+  .service-card{
+    background:var(--glass-bg);  -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(20px);
+    border:1px solid var(--glass-border);
+    border-radius:24px;padding:2.5rem 2rem;
+    text-align:center;
+    box-shadow:0 8px 32px rgba(122,34,48,.06);
+    transition:all .4s cubic-bezier(.22,.68,0,1.2);
+    position:relative;overflow:hidden;cursor:default;
+  }
+  .service-card::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(201,168,76,.05),rgba(242,207,201,.05));
+    opacity:0;transition:opacity .4s;
+  }
+  .service-card:hover{
+    transform:translateY(-10px) rotateX(3deg) scale(1.01);
+    box-shadow:0 30px 60px rgba(122,34,48,.15);
+    border-color:rgba(201,168,76,.5);
+  }
+  .service-card:hover::before{opacity:1;}
+  .svc-icon{
+    width:64px;height:64px;border-radius:50%;
+    background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(242,207,201,.2));
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;margin:0 auto 1.2rem;
+    border:1px solid rgba(201,168,76,.2);
+  }
+  .svc-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.4rem;font-weight:600;color:var(--maroon);margin-bottom:.6rem;
+  }
+  .svc-desc{font-size:.85rem;color:var(--brown-light);line-height:1.7;}
+  .svc-tag{
+    display:inline-block;margin-top:1rem;
+    font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--gold);font-weight:500;
+  }
+
+  /* GALLERY */
+  .gallery{padding:6rem 4rem;background:var(--cream);}
+  .gallery-wrapper{max-width:1000px;margin:0 auto;}
+  .carousel{position:relative;overflow:hidden;border-radius:24px;}
+  .carousel-track{
+    display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);
+  }
+  .carousel-slide{
+    min-width:100%;height:480px;
+    position:relative;overflow:hidden;
+  }
+  .carousel-slide img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .6s;
+  }
+  .carousel-slide:hover img{transform:scale(1.03);}
+  .carousel-caption{
+    position:absolute;bottom:0;left:0;right:0;
+    background:linear-gradient(to top,rgba(90,20,30,.8),transparent);
+    padding:2.5rem 2rem 1.5rem;color:#fff;
+  }
+  .carousel-caption h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;}
+  .carousel-caption p{font-size:.82rem;opacity:.8;margin-top:.2rem;}
+  .carousel-btn{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:48px;height:48px;border-radius:50%;
+    background:rgba(255,255,255,.85);border:1px solid rgba(201,168,76,.4);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;font-size:1.2rem;color:var(--maroon);
+    transition:all .3s;z-index:5;box-shadow:0 4px 20px rgba(0,0,0,.1);
+  }
+  .carousel-btn:hover{background:#fff;transform:translateY(-50%) scale(1.1);}
+  .carousel-prev{left:1.2rem;}
+  .carousel-next{right:1.2rem;}
+  .carousel-dots{display:flex;justify-content:center;gap:.6rem;margin-top:1.5rem;}
+  .carousel-dot{
+    width:8px;height:8px;border-radius:50%;
+    background:rgba(201,168,76,.3);cursor:pointer;transition:all .3s;
+  }
+  .carousel-dot.active{background:var(--gold);width:24px;border-radius:4px;}
+  .before-after-toggle{
+    display:flex;justify-content:center;margin-bottom:1.5rem;
+    background:rgba(255,255,255,.6);
+    border:1px solid rgba(201,168,76,.2);
+    border-radius:50px;padding:.3rem;
+    max-width:260px;margin-left:auto;margin-right:auto;
+  }
+  .ba-btn{
+    flex:1;padding:.5rem 1rem;border:none;border-radius:50px;
+    font-family:'Jost',sans-serif;font-size:.82rem;font-weight:500;
+    cursor:pointer;transition:all .3s;background:transparent;color:var(--brown-light);
+  }
+  .ba-btn.active{background:var(--maroon);color:#fff;box-shadow:0 4px 15px rgba(122,34,48,.25);}
+
+  /* TESTIMONIALS */
+  .testimonials{padding:6rem 4rem;}
+  .testi-grid{
+    max-width:1000px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  }
+  .testi-card{
+    background:var(--glass-bg);  -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(20px);
+    border:1px solid var(--glass-border);
+    border-radius:24px;padding:2rem;
+    position:relative;
+    box-shadow:0 8px 32px rgba(122,34,48,.06);
+    transition:all .3s;
+  }
+  .testi-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(122,34,48,.12);}
+  .quote-mark{
+    font-family:'Cormorant Garamond',serif;
+    font-size:5rem;line-height:.7;color:var(--gold);
+    opacity:.4;position:absolute;top:1rem;right:1.5rem;
+  }
+  .testi-text{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.05rem;line-height:1.8;color:var(--brown);
+    font-style:italic;margin-bottom:1.5rem;position:relative;z-index:1;
+  }
+  .testi-bride{display:flex;align-items:center;gap:.8rem;}
+  .testi-avatar{
+    width:44px;height:44px;border-radius:50%;
+    background:linear-gradient(135deg,var(--blush),var(--gold-pale));
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;border:2px solid rgba(201,168,76,.3);
+  }
+  .testi-name{font-weight:600;font-size:.88rem;color:var(--maroon);}
+  .testi-date{font-size:.75rem;color:var(--brown-light);}
+  .testi-stars{color:var(--gold);font-size:.8rem;margin-top:.2rem;letter-spacing:1px;}
+
+  /* BOOKING */
+  .booking{padding:6rem 4rem;background:var(--cream);}
+  .booking-inner{
+    max-width:1100px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1.2fr;gap:0;
+    border-radius:32px;overflow:hidden;
+    box-shadow:0 40px 100px rgba(122,34,48,.18);
+  }
+  .booking-left{
+    position:relative;overflow:hidden;min-height:600px;
+  }
+  .booking-left img{
+    width:100%;height:100%;object-fit:cover;
+    filter:brightness(.85);transition:transform .6s;
+  }
+  .booking-left:hover img{transform:scale(1.04);}
+  .booking-left-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(to right,rgba(90,20,30,.5),transparent),
+               linear-gradient(to top,rgba(90,20,30,.7),transparent 50%);
+  }
+  .booking-left-content{
+    position:absolute;bottom:2.5rem;left:2.5rem;right:2.5rem;color:#fff;
+  }
+  .booking-left-content h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;font-weight:600;margin-bottom:.5rem;
+  }
+  .booking-left-content p{font-size:.88rem;opacity:.85;}
+  .booking-form-wrap{
+    background:#fff;
+    padding:3.5rem 3rem;
+  }
+  .form-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;font-weight:600;color:var(--maroon);
+    margin-bottom:.4rem;
+  }
+  .form-sub{font-size:.85rem;color:var(--brown-light);margin-bottom:2rem;}
+  .form-group{margin-bottom:1.2rem;}
+  .form-label{display:block;font-size:.8rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--brown-light);margin-bottom:.5rem;}
+  .form-input,.form-select{
+    width:100%;padding:.9rem 1.2rem;
+    border:1.5px solid rgba(201,168,76,.25);
+    border-radius:14px;
+    background:rgba(248,248,248,.8);
+    font-family:'Jost',sans-serif;font-size:.9rem;color:var(--brown);
+    outline:none;transition:border-color .3s,box-shadow .3s;
+    appearance:none;
+  }
+  .form-input:focus,.form-select:focus{
+    border-color:var(--gold);
+    box-shadow:0 0 0 4px rgba(201,168,76,.1);
+  }
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .form-submit{
+    width:100%;padding:1rem;
+    background:linear-gradient(135deg,var(--maroon),#9b2535);
+    color:#fff;border:none;border-radius:14px;
+    font-family:'Jost',sans-serif;font-size:.9rem;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+    transition:all .35s;
+    box-shadow:0 8px 25px rgba(122,34,48,.25);
+    display:flex;align-items:center;justify-content:center;gap:.5rem;
+  }
+  .form-submit:hover{transform:translateY(-2px);box-shadow:0 16px 35px rgba(122,34,48,.35);}
+
+  /* NEWSLETTER */
+  .newsletter{
+    padding:5rem 4rem;
+    background:linear-gradient(135deg,#fdf0e8,#fdf8f2);
+    text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .newsletter::before{
+    content:'✦ ✦ ✦';
+    position:absolute;top:2rem;left:50%;transform:translateX(-50%);
+    color:rgba(201,168,76,.3);font-size:1rem;letter-spacing:1rem;
+  }
+  .newsletter h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.5rem;font-weight:600;color:var(--maroon);margin-bottom:.5rem;
+  }
+  .newsletter p{font-size:.9rem;color:var(--brown-light);margin-bottom:2rem;}
+  .newsletter-form{
+    display:flex;gap:.8rem;max-width:440px;margin:0 auto;
+  }
+  .newsletter-input{
+    flex:1;padding:.9rem 1.4rem;
+    border:1.5px solid rgba(201,168,76,.3);
+    border-radius:50px;
+    background:rgba(255,255,255,.8);
+    font-family:'Jost',sans-serif;font-size:.9rem;color:var(--brown);
+    outline:none;transition:border-color .3s;
+  }
+  .newsletter-input:focus{border-color:var(--gold);}
+  .newsletter-btn{
+    padding:.9rem 1.8rem;
+    background:var(--maroon);color:#fff;
+    border:none;border-radius:50px;
+    font-family:'Jost',sans-serif;font-size:.85rem;font-weight:600;
+    cursor:pointer;transition:all .3s;white-space:nowrap;
+  }
+  .newsletter-btn:hover{background:var(--gold);transform:translateY(-2px);}
+
+  /* FOOTER */
+  footer{
+    background:linear-gradient(135deg,#3a1020,#5c1a25);
+    color:rgba(255,255,255,.7);
+    padding:4rem 4rem 2rem;
+  }
+  .footer-top{
+    display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:3rem;margin-bottom:3rem;
+  }
+  .footer-brand h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.8rem;font-weight:600;color:var(--gold-light);
+    margin-bottom:.8rem;
+  }
+  .footer-brand p{font-size:.85rem;line-height:1.8;margin-bottom:1.5rem;}
+  .footer-socials{display:flex;gap:.8rem;}
+  .social-icon{
+    width:38px;height:38px;border-radius:50%;
+    background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:.9rem;cursor:pointer;transition:all .3s;text-decoration:none;color:rgba(255,255,255,.7);
+  }
+  .social-icon:hover{background:var(--gold);color:#fff;transform:translateY(-3px);}
+  .footer-col h4{font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);font-weight:500;margin-bottom:1.2rem;}
+  .footer-col ul{list-style:none;}
+  .footer-col ul li{margin-bottom:.6rem;}
+  .footer-col ul li a{font-size:.83rem;color:rgba(255,255,255,.6);text-decoration:none;transition:color .3s;}
+  .footer-col ul li a:hover{color:var(--gold-light);}
+  .footer-contact li{display:flex;align-items:flex-start;gap:.6rem;font-size:.83rem;margin-bottom:.8rem;}
+  .footer-contact .fc-icon{font-size:.9rem;margin-top:.1rem;flex-shrink:0;}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.08);
+    padding-top:1.5rem;
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:.78rem;
+  }
+  .footer-bottom .gold-heart{color:var(--gold-light);}
+
+  /* WHATSAPP */
+  .wa-float{
+    position:fixed;bottom:2rem;right:2rem;z-index:90;
+  }
+  .wa-btn{
+    width:60px;height:60px;border-radius:50%;
+    background:#25D366;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;cursor:pointer;text-decoration:none;
+    box-shadow:0 8px 25px rgba(37,211,102,.4);
+    transition:all .3s;position:relative;
+  }
+  .wa-btn::before{
+    content:'';position:absolute;inset:-4px;
+    border-radius:50%;border:2px solid rgba(37,211,102,.4);
+    animation:waPulse 2s ease-in-out infinite;
+  }
+  @keyframes waPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.15);opacity:0}}
+  .wa-btn:hover{transform:scale(1.1);box-shadow:0 12px 35px rgba(37,211,102,.5);}
+  .wa-tooltip{
+    position:absolute;right:70px;top:50%;transform:translateY(-50%);
+    background:var(--maroon);color:#fff;white-space:nowrap;
+    padding:.5rem 1rem;border-radius:50px;
+    font-size:.8rem;font-weight:500;
+    opacity:0;pointer-events:none;transition:opacity .3s;
+  }
+  .wa-float:hover .wa-tooltip{opacity:1;}
+
+  /* SCROLL ANIMATIONS */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+  .reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s,transform .7s;}
+  .reveal-left.visible{opacity:1;transform:translateX(0);}
+  .reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s,transform .7s;}
+  .reveal-right.visible{opacity:1;transform:translateX(0);}
+
+  /* RESPONSIVE */
+  @media(max-width:1024px){
+    .hero{grid-template-columns:1fr;padding:7rem 2.5rem 4rem;gap:3rem;}
+    .hero-visual{order:-1;}
+    .hero-oval{width:280px;height:350px;}
+    .float-elem.fe1{left:-20px;}
+    .float-elem.fe2{right:-20px;}
+    .float-elem.fe3{right:-30px;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .testi-grid{grid-template-columns:1fr;}
+    .booking-inner{grid-template-columns:1fr;}
+    .booking-left{min-height:300px;}
+    .footer-top{grid-template-columns:1fr 1fr;}
+    .sp-inner{flex-direction:column;}
+    nav{padding:1rem 2rem;}
+    .nav-links{display:none;}
+    .nav-hamburger{display:flex;}
+  }
+  @media(max-width:640px){
+    nav{padding:1rem 1.5rem;}
+    .hero{padding:6rem 1.5rem 3rem;}
+    .hero h1{font-size:2.4rem;}
+    .hero-buttons{flex-direction:column;}
+    .hero-stats{flex-wrap:wrap;gap:1.2rem;}
+    .services,.gallery,.testimonials,.booking,.newsletter{padding:4rem 1.5rem;}
+    .social-proof{padding:3rem 1.5rem;}
+    .services-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    footer{padding:3rem 1.5rem 1.5rem;}
+    .footer-bottom{flex-direction:column;gap:.5rem;text-align:center;}
+    .newsletter-form{flex-direction:column;}
+    .form-row{grid-template-columns:1fr;}
+    .booking-form-wrap{padding:2.5rem 1.5rem;}
+  }
+
+  @keyframes navSlideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+  /* Mobile Nav Open — compact inline row dropdown */
+  nav.open .nav-links{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    position:absolute;
+    top:100%;left:0;right:0;
+    background:rgba(255,255,255,0.98);  -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(20px);
+    border-top:1px solid rgba(201,168,76,0.15);
+    border-bottom:1px solid rgba(201,168,76,0.2);
+    box-shadow:0 8px 30px rgba(122,34,48,0.08);
+    align-items:center;
+    justify-content:center;
+    gap:0;
+    padding:.6rem 1rem;
+    z-index:200;
+    list-style:none;
+    animation:navSlideDown .25s ease forwards;
+  }
+  nav.open .nav-links li{ flex:0 0 auto; }
+  nav.open .nav-links a{
+    display:block;
+    font-size:.76rem;
+    font-weight:600;
+    letter-spacing:.1em;
+    padding:.5rem .85rem;
+    color:var(--brown);
+    border-radius:50px;
+  }
+  nav.open .nav-links a:hover{
+    background:rgba(201,168,76,.12);
+    color:var(--gold);
+  }
+  nav.open .nav-links a::after{ display:none; }
+</style>
+</head>
+<body>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popup">
+  <div class="popup-card">
+    <div class="popup-icon">💍</div>
+    <h2>Get Bridal Booking Details</h2>
+    <p>Leave your details and we'll reach out with exclusive packages & availability</p>
+    <input type="text" class="popup-input" id="popup-name" placeholder="Your Name">
+    <input type="tel" class="popup-input" id="popup-wa" placeholder="WhatsApp Number">
+    <button class="popup-btn" onclick="closePopup()">Continue ✦</button>
+    <button class="popup-skip" onclick="closePopup()">Skip for now</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Esha's <span>Beauty</span> Studio</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#booking">Book Now</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Book Appointment</a>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content reveal-left">
+    <div class="hero-badge">✦ Bahawalpur's Premier Bridal Studio</div>
+    <h1>Where Bridal<br><em>Dreams</em> Meet<br>Glamour</h1>
+    <p class="hero-sub">Artful bridal makeup inspired by <strong>traditional Pakistani elegance</strong> and modern luxury. Every look crafted to make you feel timeless, radiant, and unforgettably beautiful on your most special day.</p>
+    <div class="hero-buttons">
+      <a href="#booking" class="btn-primary">💍 Book Bridal Glam</a>
+      <a href="#gallery" class="btn-secondary">✦ View Portfolio</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><span>27K+</span><small>Instagram Followers</small></div>
+      <div class="hero-stat"><span>1000+</span><small>Brides Styled</small></div>
+      <div class="hero-stat"><span>5★</span><small>Client Reviews</small></div>
+    </div>
+  </div>
+
+  <div class="hero-visual reveal-right">
+    <div class="gold-ring" style="width:480px;height:480px;top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+    <div class="gold-ring" style="width:520px;height:520px;top:50%;left:50%;transform:translate(-50%,-50%);animation-duration:30s;animation-direction:reverse;opacity:.5;"></div>
+    <div class="hero-oval-glow"></div>
+    <div class="hero-oval">
+      <img src="https://www.mohifashion.com/cdn/shop/files/Web084a.webp?v=1693894496&width=823" alt="Bridal Makeup">
+    </div>
+    <div class="float-elem fe1">
+      <div class="fe-label">Latest Look</div>
+      <div class="fe-val">✨ Bridal Glam</div>
+    </div>
+    <div class="float-elem fe2">
+      <div class="fe-label">Experience</div>
+      <div class="fe-val">7+ Years</div>
+    </div>
+    <div class="float-elem fe3">
+      <div class="fe-label">Available</div>
+      <div class="fe-val">📅 Book Now</div>
+    </div>
+    <div class="particles" id="particles"></div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof">
+  <div class="sp-inner">
+    <div class="sp-card reveal">
+      <div class="sp-icon">📱</div>
+      <div class="sp-num">27K+</div>
+      <div class="sp-label">Instagram Followers</div>
+    </div>
+    <div class="sp-card reveal" style="transition-delay:.15s">
+      <div class="sp-icon">👰</div>
+      <div class="sp-num">1000+</div>
+      <div class="sp-label">Brides Styled</div>
+    </div>
+    <div class="sp-card reveal" style="transition-delay:.3s">
+      <div class="sp-icon">⭐</div>
+      <div class="sp-num">5★</div>
+      <div class="sp-label">Client Reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-header reveal">
+    <div class="section-tag">✦ What We Offer</div>
+    <h2>Our Luxury Services</h2>
+    <div class="gold-divider"></div>
+    <p>Each service is tailored with precision, artistry, and a deep understanding of South Asian beauty traditions.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="svc-icon">👰</div>
+      <div class="svc-title">Bridal Makeup</div>
+      <p class="svc-desc">Full-day bridal transformation with HD, airbrush, or traditional looks. Includes trial session, skin prep, and long-lasting flawless finish.</p>
+      <span class="svc-tag">★ Signature Service</span>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.1s">
+      <div class="svc-icon">💍</div>
+      <div class="svc-title">Engagement Glam</div>
+      <p class="svc-desc">Romantic, glowing looks perfect for your engagement ceremony. Soft gold accents and elegant eye artistry for a dreamy appearance.</p>
+      <span class="svc-tag">✦ Popular</span>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.2s">
+      <div class="svc-icon">🎉</div>
+      <div class="svc-title">Party Makeup</div>
+      <p class="svc-desc">Bold, striking looks for mehndi, walima, and special occasions. Customized to complement your outfit and event vibe.</p>
+      <span class="svc-tag">✦ Available</span>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.3s">
+      <div class="svc-icon">💇</div>
+      <div class="svc-title">Hair Styling</div>
+      <p class="svc-desc">From elaborate traditional updos to sleek modern styles. Includes braid work, floral placements, and gajra styling.</p>
+      <span class="svc-tag">✦ Available</span>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.4s">
+      <div class="svc-icon">✨</div>
+      <div class="svc-title">Facials & Skin Care</div>
+      <p class="svc-desc">Pre-bridal skincare rituals, brightening facials, and deep hydration treatments to ensure your skin glows naturally.</p>
+      <span class="svc-tag">✦ Recommended</span>
+    </div>
+    <div class="service-card reveal" style="transition-delay:.5s">
+      <div class="svc-icon">🌿</div>
+      <div class="svc-title">Mehndi Styling</div>
+      <p class="svc-desc">Complete mehndi day makeover with vibrant coordinated looks, jewellery styling guidance, and photography-ready finish.</p>
+      <span class="svc-tag">✦ Package</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-wrapper">
+    <div class="section-header reveal">
+      <div class="section-tag">✦ Our Work</div>
+      <h2>Featured Bridal Gallery</h2>
+      <div class="gold-divider"></div>
+    </div>
+    <div class="before-after-toggle reveal">
+      <button class="ba-btn active" id="btn-after" onclick="toggleBA('after')">Party Glam</button>
+      <button class="ba-btn" id="btn-before" onclick="toggleBA('before')">Bridal Glam</button>
+    </div>
+    <div class="carousel reveal">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide">
+          <img id="img0" src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=900&q=80" alt="Bridal 1">
+          <div class="carousel-caption"><h3>Traditional Bridal Look</h3><p>Gold & Maroon — Bahawalpur Wedding</p></div>
+        </div>
+        <div class="carousel-slide">
+          <img id="img1" src="https://images.unsplash.com/photo-1503236823255-94609f598e71?w=900&q=80" alt="Bridal 2">
+          <div class="carousel-caption"><h3>Engagement Glam</h3><p>Soft Blush & Gold — Romantic Styling</p></div>
+        </div>
+        <div class="carousel-slide">
+          <img id="img2" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80" alt="Bridal 3">
+          <div class="carousel-caption"><h3>Walima Elegance</h3><p>Nude & Champagne — Modern Luxe</p></div>
+        </div>
+        <div class="carousel-slide">
+          <img id="img3" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=80" alt="Bridal 4">
+          <div class="carousel-caption"><h3>Mehndi Glow</h3><p>Earthy Tones — Festive Celebration</p></div>
+        </div>
+      </div>
+      <button class="carousel-btn carousel-prev" onclick="slideCarousel(-1)">‹</button>
+      <button class="carousel-btn carousel-next" onclick="slideCarousel(1)">›</button>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header reveal">
+    <div class="section-tag">✦ Bride Reviews</div>
+    <h2>Words from Our Brides</h2>
+    <div class="gold-divider"></div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="quote-mark">"</div>
+      <p class="testi-text">Esha made me feel like a queen on my wedding day. The bridal look she created was exactly what I had dreamed of — traditional, elegant, and absolutely stunning. Everyone kept complimenting my makeup all night!</p>
+      <div class="testi-bride">
+        <div class="testi-avatar">👰</div>
+        <div>
+          <div class="testi-name">Sana Riaz</div>
+          <div class="testi-date">Bride · January 2025</div>
+          <div class="testi-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:.15s">
+      <div class="quote-mark">"</div>
+      <p class="testi-text">I had my engagement makeup done at Esha's studio and I cannot express how perfect it was. The blush tones, the soft shimmer — she understood my vision without me even fully describing it. Pure magic.</p>
+      <div class="testi-bride">
+        <div class="testi-avatar">💍</div>
+        <div>
+          <div class="testi-name">Ayesha Malik</div>
+          <div class="testi-date">Engagement · March 2025</div>
+          <div class="testi-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:.3s">
+      <div class="quote-mark">"</div>
+      <p class="testi-text">The pre-bridal package was worth every rupee. My skin was glowing before the wedding and Esha's team made sure everything was perfect from hair to makeup. Book her early — she gets booked very fast!</p>
+      <div class="testi-bride">
+        <div class="testi-avatar">✨</div>
+        <div>
+          <div class="testi-name">Zara Ahmed</div>
+          <div class="testi-date">Bride · November 2024</div>
+          <div class="testi-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="section-header reveal">
+    <div class="section-tag">✦ Reserve Your Date</div>
+    <h2>Book an Appointment</h2>
+    <div class="gold-divider"></div>
+    <p>Slots fill quickly — especially for wedding season. Secure your date today.</p>
+  </div>
+  <div class="booking-inner reveal">
+    <div class="booking-left">
+      <img src="https://images.unsplash.com/photo-1588516903720-8ccea31dbd33?w=600&q=80" alt="Bridal Studio">
+      <div class="booking-left-overlay"></div>
+      <div class="booking-left-content">
+        <h3>Your Dream Look Awaits</h3>
+        <p>📍 Bahawalpur, Punjab, Pakistan<br>📞 Available on WhatsApp</p>
+      </div>
+    </div>
+    <div class="booking-form-wrap">
+      <h3 class="form-title">Let's Create Your Look</h3>
+      <p class="form-sub">Fill in your details and we'll confirm your appointment within 24 hours</p>
+      <form onsubmit="submitBooking(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-input" placeholder="Full Name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">WhatsApp Number</label>
+            <input type="tel" class="form-input" placeholder="+92 3XX XXXXXXX" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Event Date</label>
+            <input type="date" class="form-input" title="Select your event date" placeholder="MM/DD/YYYY" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Service Type</label>
+            <select class="form-select form-input" title="Select your service type" required>
+              <option value="">Select Service</option>
+              <option>Bridal Makeup (Full Day)</option>
+              <option>Engagement Glam</option>
+              <option>Party Makeup</option>
+              <option>Hair Styling</option>
+              <option>Facials & Skin Care</option>
+              <option>Mehndi Styling</option>
+              <option>Pre-Bridal Package</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Special Requests (Optional)</label>
+          <input type="text" class="form-input" placeholder="Any specific look or requirements...">
+        </div>
+        <button type="submit" class="form-submit">💍 Confirm Appointment</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="reveal">
+    <div class="section-tag">✦ Stay Beautiful</div>
+    <h2>Join Our Bridal Circle</h2>
+    <p>Get exclusive tips, early booking access, and seasonal offers — straight to your inbox</p>
+    <div class="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="Your email address">
+      <button class="newsletter-btn" onclick="subscribeNewsletter()">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h3>Esha's Beauty Studio</h3>
+      <p>Where tradition meets artistry. Crafting timeless bridal looks for the modern Pakistani bride in Bahawalpur and beyond.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-icon" title="Instagram">📸</a>
+        <a href="#" class="social-icon" title="Facebook">📘</a>
+        <a href="https://wa.me/923001234567" class="social-icon" title="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="18" height="18" fill="currentColor"><path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.613 4.6 1.68 6.56L2.667 29.333l6.987-1.64A13.28 13.28 0 0016.003 29.333c7.36 0 13.33-5.973 13.33-13.333S23.363 2.667 16.003 2.667zm5.84 18.013c-.32-.16-1.893-.933-2.187-1.04-.293-.107-.507-.16-.72.16-.213.32-.827 1.04-.987 1.227-.16.187-.347.2-.667.04-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.147-.147.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.253-.613-.52-.533-.72-.547-.187-.013-.4-.013-.613-.013s-.56.08-.853.4c-.293.32-1.12 1.093-1.12 2.667s1.147 3.093 1.307 3.307c.16.213 2.253 3.44 5.467 4.827.773.333 1.373.533 1.84.68.773.24 1.48.213 2.04.133.627-.093 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/></svg></a>
+        <a href="#" class="social-icon" title="TikTok">🎵</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Bridal Makeup</a></li>
+        <li><a href="#services">Engagement Glam</a></li>
+        <li><a href="#services">Party Makeup</a></li>
+        <li><a href="#services">Hair Styling</a></li>
+        <li><a href="#services">Facials & Skin Care</a></li>
+        <li><a href="#services">Mehndi Styling</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Studio</h4>
+      <ul>
+        <li><a href="#gallery">Portfolio</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#booking">Book Appointment</a></li>
+        <li><a href="#">Bridal Packages</a></li>
+        <li><a href="#">Gift Cards</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul class="footer-contact">
+        <li><span class="fc-icon">📍</span> Bahawalpur, Punjab, Pakistan</li>
+        <li><span class="fc-icon">📲</span> WhatsApp Available</li>
+        <li><span class="fc-icon">🕐</span> Mon–Sat: 9 AM – 8 PM</li>
+        <li><span class="fc-icon">📸</span> @eshsbeautystudio</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Esha's Beauty Studio · Bahawalpur. All rights reserved.</span>
+    <span>Made with <span class="gold-heart">♥</span> for beautiful brides</span>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<div class="wa-float">
+  <div class="wa-tooltip">Chat on WhatsApp</div>
+  <a href="https://wa.me/923001234567?text=Hi%20Esha!%20I'd%20like%20to%20book%20an%20appointment." class="wa-btn" target="_blank" rel="noopener" title="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" fill="#fff">
+      <path d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.347.613 4.6 1.68 6.56L2.667 29.333l6.987-1.64A13.28 13.28 0 0016.003 29.333c7.36 0 13.33-5.973 13.33-13.333S23.363 2.667 16.003 2.667zm0 24c-2.12 0-4.107-.573-5.813-1.573l-.413-.24-4.147.973.933-4.04-.267-.427A10.613 10.613 0 015.333 16c0-5.88 4.787-10.667 10.667-10.667S26.667 10.12 26.667 16 21.88 26.667 16 26.667zm5.84-7.987c-.32-.16-1.893-.933-2.187-1.04-.293-.107-.507-.16-.72.16-.213.32-.827 1.04-.987 1.227-.16.187-.347.2-.667.04-.32-.16-1.347-.493-2.56-1.573-.947-.84-1.587-1.88-1.773-2.2-.187-.32-.02-.493.14-.653.147-.147.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.733-.987-2.373-.253-.613-.52-.533-.72-.547-.187-.013-.4-.013-.613-.013s-.56.08-.853.4c-.293.32-1.12 1.093-1.12 2.667s1.147 3.093 1.307 3.307c.16.213 2.253 3.44 5.467 4.827.773.333 1.373.533 1.84.68.773.24 1.48.213 2.04.133.627-.093 1.893-.773 2.16-1.52.267-.747.267-1.387.187-1.52-.08-.133-.293-.213-.613-.373z"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+// POPUP
+function closePopup(){
+  const overlay = document.getElementById('popup');
+  overlay.style.opacity = '0';
+  overlay.style.transition = 'opacity .4s';
+  setTimeout(()=>overlay.classList.add('hidden'), 400);
+}
+
+// NAV TOGGLE
+function toggleNav(){
+  document.getElementById('navbar').classList.toggle('open');
+}
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
+
+// NAVBAR SCROLL
+window.addEventListener('scroll',()=>{
+  const nav = document.getElementById('navbar');
+  if(window.scrollY > 60){
+    nav.style.boxShadow = '0 4px 30px rgba(122,34,48,.08)';
+  } else {
+    nav.style.boxShadow = 'none';
+  }
+});
+
+// PARTICLES
+(function(){
+  const container = document.getElementById('particles');
+  if(!container) return;
+  for(let i=0;i<18;i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      animation-duration:${3+Math.random()*4}s;
+      animation-delay:${Math.random()*4}s;
+      opacity:${.3+Math.random()*.5};
+      width:${2+Math.random()*4}px;
+      height:${2+Math.random()*4}px;
+    `;
+    container.appendChild(p);
+  }
+})();
+
+// CAROUSEL
+let currentSlide = 0;
+const totalSlides = 4;
+const track = document.getElementById('carouselTrack');
+const dotsContainer = document.getElementById('carouselDots');
+let autoSlide;
+
+// Create dots
+for(let i=0;i<totalSlides;i++){
+  const dot = document.createElement('div');
+  dot.className = 'carousel-dot' + (i===0?' active':'');
+  dot.onclick = ()=>goToSlide(i);
+  dotsContainer.appendChild(dot);
+}
+
+function goToSlide(n){
+  currentSlide = (n + totalSlides) % totalSlides;
+  track.style.transform = `translateX(-${currentSlide*100}%)`;
+  document.querySelectorAll('.carousel-dot').forEach((d,i)=>{
+    d.classList.toggle('active', i===currentSlide);
+  });
+}
+
+function slideCarousel(dir){
+  goToSlide(currentSlide + dir);
+  resetAutoSlide();
+}
+
+function resetAutoSlide(){
+  clearInterval(autoSlide);
+  autoSlide = setInterval(()=>goToSlide(currentSlide+1), 4500);
+}
+resetAutoSlide();
+
+// BEFORE/AFTER
+const afterImgs = [
+  'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=900&q=80',
+  'https://images.unsplash.com/photo-1503236823255-94609f598e71?w=900&q=80',
+  'https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80',
+  'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=80'
+];
+const beforeImgs = [
+  'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=900&q=80',
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=900&q=80',
+  'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=900&q=80',
+  'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=900&q=80'
+];
+
+function toggleBA(mode){
+  const imgs = mode==='after'?afterImgs:beforeImgs;
+  imgs.forEach((src,i)=>{
+    const el = document.getElementById('img'+i);
+    if(el) el.src = src;
+  });
+  document.getElementById('btn-after').classList.toggle('active', mode==='after');
+  document.getElementById('btn-before').classList.toggle('active', mode==='before');
+}
+
+// BOOKING
+function submitBooking(e){
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = '✓ Appointment Requested!';
+  btn.style.background = 'linear-gradient(135deg,#2a7a2a,#3a9a3a)';
+  setTimeout(()=>{
+    btn.textContent = '💍 Confirm Appointment';
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+
+// NEWSLETTER
+function subscribeNewsletter(){
+  const input = document.querySelector('.newsletter-input');
+  const btn = document.querySelector('.newsletter-btn');
+  if(input.value.includes('@')){
+    btn.textContent = '✓ Subscribed!';
+    btn.style.background = '#2a7a2a';
+    input.value = '';
+    setTimeout(()=>{
+      btn.textContent = 'Subscribe';
+      btn.style.background = '';
+    }, 3000);
+  }
+}
+
+// PARALLAX on hero
+window.addEventListener('scroll',()=>{
+  const scrolled = window.scrollY;
+  const heroVisual = document.querySelector('.hero-visual');
+  if(heroVisual && scrolled < 800){
+    heroVisual.style.transform = `translateY(${scrolled * 0.1}px)`;
+  }
+});
+
+// CLOSE NAV on link click
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    document.getElementById('navbar').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
